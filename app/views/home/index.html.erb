@@ -1,15 +1,19 @@
-<h1>Home index</h1>
 
 <% if current_user %>
+  <h1>Welcome to the <%=current_user.domain%> </h1>
   <p>Hello <%= current_user.email %>!</p>
   <p>Have a great day <%= current_user.name %>!</p>
+  <p>Your domain is <%=current_user.domain %>!</p>
+  <p>Your role is <%=current_user.role %>!</p>
   <p>Successfully authenticated with your Devise account</p>
   <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+  <a class="btn btn-primary" <%= link_to "Students", students_path%></a>
 
 <% else %>
 
   <br/>
   <div>
+    <h1>Welcome to the Main Page </h1>
     <a class="btn btn-primary" <%= link_to "Register", new_user_registration_path %></a>
     <a class="btn btn-primary" <%= link_to "Login", new_user_session_path%></a>
   </div>

@@ -2,7 +2,10 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  #config.hosts.clear
 
+  config.hosts << /.*\.lms\.com/
+  Rails.application.routes.default_url_options[:host] = 'www.lms.com:3000'
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -36,13 +39,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   #config.action_mailer.raise_delivery_errors = false
 
-  ### ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  # A dummy setup for development - no deliveries, but logged
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_charset = "utf-8"
+
 
 
 
