@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  def index
+
+  end
+
   def new
-    @users = User.new
+    @user = User.new
   end
 
   def create
-    @users = User.new(user_params)
-   if @user.save
-     redirect_to @users, alert: "User created successfully."
-   else
-     redirect_to new_user_path, alert: "Error creating user."
-   end
+    @user = User.new(user_params)
+    #binding.pry
+    if @user.save
+      redirect_to users_admin_index_path, alert: "User created successfully."
+    else
+      redirect_to new_users_admin_path, alert: "Error creating user."
+    end
   end
 
   def user_params

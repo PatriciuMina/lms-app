@@ -7,7 +7,8 @@
   <p>Your role is <%=current_user.role %>!</p>
   <p>Successfully authenticated with your Devise account</p>
   <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
-  <a class="btn btn-primary" <%= link_to "Students", students_path%></a>
+  <a class="btn btn-primary" <%= link_to "Users", users_admin_index_path%></a>
+
 
 <% else %>
 
