@@ -1,0 +1,19 @@
+<%= form_for @school,  method: :post, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :domain %><br />
+    <%= f.text_field :domain, autofocus: true, autocomplete: "domain" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Create School" %>
+  </div>
+<% end %>
+
+

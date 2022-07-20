@@ -1,5 +1,8 @@
-
 <% if current_user %>
+  <%if current_user.domain != request.subdomains(0).first %>
+    <h1>You are not allowed on this page, go back to your organization (<%=current_user.domain%>.lms.com)</h1>
+    <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+  <%else %>
   <h1>Welcome to the <%=current_user.domain%> </h1>
   <p>Hello <%= current_user.email %>!</p>
   <p>Have a great day <%= current_user.name %>!</p>
@@ -8,7 +11,7 @@
   <p>Successfully authenticated with your Devise account</p>
   <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
   <a class="btn btn-primary" <%= link_to "Users", users_admin_index_path%></a>
-
+  <%end %>
 
 <% else %>
 
@@ -17,5 +20,10 @@
     <h1>Welcome to the Main Page </h1>
     <a class="btn btn-primary" <%= link_to "Register", new_user_registration_path %></a>
     <a class="btn btn-primary" <%= link_to "Login", new_user_session_path%></a>
+    <%if current_page?('http://www.lms.com:3000/') %>
+    <a class="btn btn-primary" <%= link_to "Register School", new_school_path %></a>
+    <%end %>
+
+
   </div>
 <% end %>
